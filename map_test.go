@@ -6,11 +6,11 @@ import (
 	"testing"
 )
 
-// panic: assignment to entry in nil map
 func TestNilMap(t *testing.T) {
-	defer func() { log.Println(recover()) }()
+	defer func() { log.Println("recover", recover()) }()
 	var m map[string]string
-	m["foo"] = "bar" // panic: assignment to entry in nil map
+	log.Println("--->", m["foo"]) // not panic
+	m["foo"] = "bar"              // panic: assignment to entry in nil map
 }
 
 func TestBasicMap(t *testing.T) {
