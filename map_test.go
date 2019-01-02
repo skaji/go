@@ -8,11 +8,7 @@ import (
 
 // panic: assignment to entry in nil map
 func TestNilMap(t *testing.T) {
-	defer func() {
-		if err := recover(); err != nil {
-			log.Println(err)
-		}
-	}()
+	defer func() { log.Println(recover()) }()
 	var m map[string]string
 	m["foo"] = "bar" // panic: assignment to entry in nil map
 }
